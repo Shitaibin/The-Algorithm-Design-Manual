@@ -1,0 +1,1 @@
+void change(int &a);
