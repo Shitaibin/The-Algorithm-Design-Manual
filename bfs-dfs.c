@@ -68,9 +68,10 @@ void bfs(graph *g, int start)
   }
 }
 
-int edge_classificatio(int x, int y)
+int edge_classification(int x, int y)
 {
-  if (parent[y] == x) return (TRUE);
+  //printf("x is %d, parent[%d] = %d\n", x, y, parent[y]);
+  if (parent[y] == x) return (TREE);
   if (discovered[y] && !processed[y]) return (BACK);
   if (processed[y] && (entry_time[y] > entry_time[x])) return (FORWARD);
   if (processed[y] && (entry_time[y] < entry_time[x])) return (CROSS);
@@ -96,6 +97,7 @@ void dfs(graph *g, int v)
     y = p->y;
     if (discovered[y] == FALSE) {
       parent[y] = v;
+      printf("parent[%d]=%d\n", y, v);
       process_edge(v, y);
       dfs(g, y);
     } else if((!processed[y]) || (g->directed)) {
