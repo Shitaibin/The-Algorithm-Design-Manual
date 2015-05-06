@@ -73,8 +73,8 @@ int edge_classification(int x, int y)
   //printf("x is %d, parent[%d] = %d\n", x, y, parent[y]);
   if (parent[y] == x) return (TREE);
   if (discovered[y] && !processed[y]) return (BACK);
-  if (processed[y] && (entry_time[y] > entry_time[x])) return (FORWARD);
-  if (processed[y] && (entry_time[y] < entry_time[x])) return (CROSS);
+  if (processed[y] && (entry_time[y] > entry_time[x])) return (FORWARD); // y is the descendant of x
+  if (processed[y] && (entry_time[y] < entry_time[x])) return (CROSS); // y has been processed before processing x
 
   printf("Warning: self loop (%d,%d)\n", x, y);
 }
@@ -97,7 +97,7 @@ void dfs(graph *g, int v)
     y = p->y;
     if (discovered[y] == FALSE) {
       parent[y] = v;
-      printf("parent[%d]=%d\n", y, v);
+      //printf("parent[%d]=%d\n", y, v); // if you test articulaiton, you may need this
       process_edge(v, y);
       dfs(g, y);
     } else if((!processed[y]) || (g->directed)) {
