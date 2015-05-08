@@ -24,7 +24,10 @@ void process_vertex_late(int v)
 
 void process_edge(int v, int y)
 {
-  if (parent[parent[v]] == y) {
+  int class;
+
+  class = edge_classification(v, y);
+  if (class == BACK && parent[parent[v]] == y) {
     printf("there is a triangle: %d %d %d\n", y, parent[v], v);
     finish = TRUE;
     is_triangle = TRUE;
