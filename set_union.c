@@ -15,7 +15,7 @@ void set_union_init(set_union *s, int n)
 {
   int i;
 
-  for (i=0; i<n; ++i) {
+  for (i=1; i<=n; ++i) {
     s->p[i] = i;
     s->size[i] = 1;
   }
@@ -59,8 +59,9 @@ void print_set_union(set_union *s)
 {
   int i;
 
-  for (i=1; i<s->n; ++i)
-    printf("%d set=%d size=%d\n", i, find(s, i), s->size[i]); // different with Skiena's code
+  for (i=1; i<=s->n; ++i)
+    //printf("%d set=%d size=%d\n", i, find(s, i), s->size[i]); // different with Skiena's code
+    printf("%d set=%d size=%d\n", i, s->p[i], s->size[i]); // different with Skiena's code
 
   printf("\n");
 }
