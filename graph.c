@@ -28,27 +28,46 @@ void initialize_graph(graph *g, bool directed)
 void read_graph(graph *g, bool directed)
 {
   int i;
-  int m;
-  int x, y;
+  int m;          /* no. of edges */
+  int x, y;       /* vertices x and y */
 
   initialize_graph(g, directed);
   
-  printf("input the number of vertices and edges:");
+  printf("input the number of vertices and edges:"); 
   scanf("%d %d", &(g->nvertices), &m);
   for (i=0; i<m; ++i) {
     printf("input two vertices of an edge:");
-    scanf("%d %d", &x, &y);
-    insert_graph(g, x, y, directed);
+    scanf("%d %d", &x, &y); 
+    insert_graph(g, x, y, 1, directed); // set the weight to 1 for unweighted graph
   }
 }
 
-void insert_graph(graph *g, int x, int y, bool directed)
+// this function is not exist in Skiena's code
+void read_weighted_graph(graph *g, bool directed)
+{
+  int i;
+  int m;          /* no. of edges */
+  int x, y;       /* vertices x and y */
+  int weight;     /* weight of edge (x, y) */
+
+  initialize_graph(g, directed);
+  
+  printf("input the number of vertices and edges:"); 
+  scanf("%d %d", &(g->nvertices), &m);
+  for (i=0; i<m; ++i) {
+    printf("input two vertices of an edge:");
+    scanf("%d %d %d", &x, &y, &weight); 
+    insert_graph(g, x, y, weight, directed);
+  }
+}
+
+void insert_graph(graph *g, int x, int y, int weight, bool directed)
 {
   edgenode *p;
 
   p = malloc(sizeof(edgenode));
 
-  p->weight = NULL;
+  p->weight = weight;
   p->y = y;
   p->next = g->edges[x];
 
@@ -56,7 +75,7 @@ void insert_graph(graph *g, int x, int y, bool directed)
   g->degree[x] ++;
 
   if (directed == FALSE)
-    insert_graph(g, y, x, TRUE);
+    insert_graph(g, y, x, 0, TRUE);
   else
     g->nedges++;
 }
@@ -107,3 +126,18 @@ void print_graph(graph *g)
   }
 }
 
+void print_weighted_graph(graph *g)
+{
+  int i;
+  edgenode *p;
+
+  for (i=1; i<=g->nvertices; ++i) {
+    printf("node %d:\n", i);
+    p = g->edges[i];
+    while (p != NULL) {
+      printf("\t (%d, %d):%d\n", i, p->y, p->weight);
+      p = p->next;
+    }
+    printf("\n");
+  }
+}
