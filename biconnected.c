@@ -36,8 +36,8 @@ void process_vertex_early(int v)
 void process_vertex_late(int v)
 {
   bool root;
-  int time_v;
-  int time_parent;
+  int time_v;       /* entry time of current vertex v */
+  int time_parent;  /* entry time of parent vertex */
 
   if (parent[v] < 1) {    /* test if v is the root */
     if (tree_out_degree[v] > 1)
