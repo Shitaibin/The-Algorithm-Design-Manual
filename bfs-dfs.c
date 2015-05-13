@@ -40,8 +40,8 @@ void initialize_search(graph *g)
 void bfs(graph *g, int start)
 {
   queue q;
-  int v;
-  int y;
+  int v;          /* current node */
+  int y;          /* neighbor vertex */
   edgenode *p;
 
   init_queue(&q);
