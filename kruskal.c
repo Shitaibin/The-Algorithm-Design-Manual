@@ -17,13 +17,13 @@
 #define MAXINT    1000007
 
 typedef struct {
-  int x, y;
-  int weight;
+  int x, y;     /* vertex x and y */
+  int weight;   /* weight of edge {v, y} */
 } edge_pair;
 
 void to_edge_array(graph *g, edge_pair e[])
 {
-  int i, m;
+  int i, m;       /* counter */
   edgenode *p;
 
   m = 1;
@@ -48,10 +48,10 @@ bool weight_compare(edge_pair *x, edge_pair *y)
 
 void kruskal(graph *g)
 {
-  int i;
-  set_union s;
-  edge_pair e[MAXV+1];
-  bool weight_compare();
+  int i;                      /* counter */
+  set_union s;                /* union and find set */
+  edge_pair e[MAXV+1];        /* pair of edge */
+  bool weight_compare();      /* compare method for qsort */
 
   set_union_init(&s, g->nvertices);
 

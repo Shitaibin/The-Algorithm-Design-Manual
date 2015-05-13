@@ -15,7 +15,7 @@
 
 void initialize_graph(graph *g, bool directed)
 {
-  int i;
+  int i;                /* counter */
 
   g->nvertices = 0;
   g->nedges = 0;
@@ -63,7 +63,7 @@ void read_weighted_graph(graph *g, bool directed)
 
 void insert_graph(graph *g, int x, int y, int weight, bool directed)
 {
-  edgenode *p;
+  edgenode *p;    /* temperary pointer */
 
   p = malloc(sizeof(edgenode));
 
@@ -82,7 +82,7 @@ void insert_graph(graph *g, int x, int y, int weight, bool directed)
 
 void delete_graph(graph *g, int x, int y, bool directed)
 {
-  int i;
+  int i;                      /*  counter */
   edgenode *p, *p_back;       /* temporary pointers */
 
   p = g->edges[x];

@@ -13,14 +13,14 @@
 #include "bool.h"
 
 
-init_queue(queue *q)
+void init_queue(queue *q)
 {
   q->first = 0;
   q->last = QUEUESIZE-1;
   q->count = 0;
 }
 
-enqueue(queue *q, item_type x)
+void enqueue(queue *q, item_type x)
 {
   if (q->count < QUEUESIZE-1) {
     q->last = (q->last+1) % QUEUESIZE;
