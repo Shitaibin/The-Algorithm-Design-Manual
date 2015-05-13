@@ -32,7 +32,7 @@ int find(set_union *s, int x)
 
 int union_sets(set_union *s, int s1, int s2)
 {
-  int r1, r2;
+  int r1, r2;   /* root of s1 and s2 */
 
   r1 = find(s, s1);
   r2 = find(s, s2);
