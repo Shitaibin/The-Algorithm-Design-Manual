@@ -38,6 +38,7 @@ void process_vertex_late(int v)
 
 void process_edge(int x, int y)
 {
+  // y already has a color
   if (color[x] == color[y]) {
     bipartite = FALSE;
     printf("Warning: graph not bipartite, due to (%d,%d)\n",x,y);

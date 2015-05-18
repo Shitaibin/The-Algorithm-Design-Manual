@@ -28,7 +28,7 @@ bool finished = FALSE;      /* if true, cut off search immediately */
 
 void initialize_search(graph *g)
 {
-  int i;
+  int i;          /* counter */
 
   for (i=0; i<MAXV+1; ++i) {
     processed[i] = FALSE;
@@ -39,7 +39,7 @@ void initialize_search(graph *g)
 
 void bfs(graph *g, int start)
 {
-  queue q;
+  queue q;        /* queue for save vertices */
   int v;          /* current node */
   int y;          /* neighbor vertex */
   edgenode *p;
