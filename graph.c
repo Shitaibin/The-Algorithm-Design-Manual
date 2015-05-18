@@ -75,7 +75,7 @@ void insert_graph(graph *g, int x, int y, int weight, bool directed)
   g->degree[x] ++;
 
   if (directed == FALSE)
-    insert_graph(g, y, x, 0, TRUE);
+    insert_graph(g, y, x, weight, TRUE);
   else
     g->nedges++;
 }
