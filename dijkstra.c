@@ -68,22 +68,6 @@ void dijkstra(graph *g, int start)
 	  }
 }
 
-void find_path(int start, int i, int parent[])
-{
-  int v;      /* current vertex in path */
-
-  init_stack(&s);
-
-  v = i;
-  while (parent[v] != start) {
-    push(&s, v);
-    v = parent[v];
-  }
-  push (&s, start);
-
-  print_stack(&s);
-}
-
 void print_parent(graph *g)
 {
   int i;
@@ -102,14 +86,14 @@ int main()
 
   read_weighted_graph(&g, FALSE);
   print_weighted_graph(&g);
-  start = 6;
+  start = 6;        /* the same as text book */
   dijkstra(&g, start);
 
+  print_parent(&g); 
+  
   printf("\npath from vertex %d:\n", start);
   for (i=1; i<=(g.nvertices); ++i)
     find_path(start, i, parent);
-  
-  print_parent(&g); 
 
   return 0;
 }
