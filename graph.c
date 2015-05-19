@@ -141,3 +141,15 @@ void print_weighted_graph(graph *g)
     printf("\n");
   }
 }
+
+
+void find_path(int start, int end, int parents[])
+{
+  if ((start == end) || (end == -1)) {
+    printf("%d\n", start);
+  } else {
+    find_path(start, parents[end], parents);
+    printf(" %d", end);
+  }
+}
+

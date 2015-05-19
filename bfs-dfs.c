@@ -115,7 +115,7 @@ void dfs(graph *g, int v)
   processed[v] = TRUE;
 }
 
-find_path(int start, int end, int parents[])
+void find_path(int start, int end, int parents[])
 {
   if ((start == end) || (end == -1)) {
     printf("\n%d", start);
