@@ -65,3 +65,37 @@ void print_set_union(set_union *s)
 
   printf("\n");
 }
+
+// path compression
+int find_v2(set_union *s, int x)
+{
+  if (s->p[x] != x)
+    s->p[x] = find_v2(s, s->p[x]);
+
+  return s->p[x];
+}
+
+int union_sets_v2(set_union *s, int s1, int s2)
+{
+  int r1, r2;   /* root of s1 and s2 */
+
+  r1 = find_v2(s, s1);
+  r2 = find_v2(s, s2);
+
+  printf("s1=%d r1=%d s2=%d r2=%d\n", s1, r1, s2, r2);
+
+  if (r1 == r2) return 0;
+  if (s->size[r1] >= s->size[r2]) {
+    s->p[r2] = r1;
+    s->size[r1] += s->size[r2];
+  } else {
+    s->p[r1] = r2;
+    s->size[r2] += s->size[r1];
+  }
+  return 0;
+}
+
+bool same_component_v2(set_union *s, int s1, int s2)
+{
+  return ( find_v2(s, s1) == find_v2(s, s2) );
+}

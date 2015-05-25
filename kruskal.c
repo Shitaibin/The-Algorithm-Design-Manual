@@ -67,6 +67,10 @@ void kruskal(graph *g)
       union_sets(&s, e[i].x, e[i].y);
     }
   }
+ 
+  // final set union
+  printf("the final set union:\n");
+  print_set_union(&s);
 }
 
 int main()

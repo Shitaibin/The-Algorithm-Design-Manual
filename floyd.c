@@ -104,8 +104,11 @@ void floyd(adjacency_matrix *g)
 
 int main()
 {
+  bool directed = TRUE;  /* FALSE for floyd.in01, TRUE for floyd.in02 */
   adjacency_matrix g;
-  read_adjacency_matrix(&g, FALSE);     /* or you can build a adjacency matrix based on graph */
+
+  scanf("%d", &directed);
+  read_adjacency_matrix(&g, directed);     /* or you can build a adjacency matrix based on graph */
   printf("graph is:\n");
   print_graph(&g);
 
@@ -114,6 +117,9 @@ int main()
   printf("all-pairs shorest path by floyd:\n");
   print_adjacency_matrix(&g);
 
-  printf("you must find the path form i to i is not 0,\nthe value is the smallest weight of its edges\nmultiply by 2.\n");
+  if (directed == FALSE)
+    printf("you must find the path form i to i is not 0,\nthe value is the smallest weight of its edges\nmultiply by 2.\n");
+  else
+    printf("what's the meaning of i to i? the shorest directed cycle, right?\n");
   return 0;
 }
