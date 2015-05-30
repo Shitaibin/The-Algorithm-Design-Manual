@@ -13,7 +13,7 @@
 #include "backtrack.h"
 
 int nsol;           /* solution count */
-int aryset[NMAX];     /* originnal set array */
+int aryset[NMAX+1];     /* originnal set array */
 
 void read_aryset(int n)
 {
@@ -61,7 +61,7 @@ void construct_candidates(int a[], int k, int n,int c[], int *ncandidates)
 
 int main()
 {
-  int a[NMAX];        /* solution vector */
+  int a[NMAX+1];        /* solution vector */
   int n;              /* set size */
   nsol = 0;           /* init solution count */
   
